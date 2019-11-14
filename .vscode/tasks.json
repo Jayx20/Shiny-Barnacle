@@ -1,0 +1,24 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build Project",
+            "command": "C:/mingw64/bin/g++.exe",
+            "args": [
+                "-g",
+                "-c", "${workspaceFolder}\\src/main.cpp", "${workspaceFolder}\\src/Graphics/Renderer.cpp",
+                "-Werror",
+                "-o",
+                "${workspaceFolder}\\Build.exe"
+            ],
+            "options": {
+                "cwd": "C:/mingw64/bin"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}

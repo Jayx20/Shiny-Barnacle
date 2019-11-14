@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics.hpp
+Graphics/Mesh.hpp
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Mesh.hpp
+Graphics/Renderer.hpp
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.hpp
+Graphics/ShaderClass.hpp
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/ShaderClass.hpp
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Mesh.hpp
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.cpp
+Renderer.hpp
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.hpp
+iostream
+-
+string
+-
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.hpp
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/ShaderClass.hpp
+string
+-
+
+C:/Users/Jordan/Desktop/Unnamed Project/src/main.cpp
+iostream
+-
+Graphics.hpp
+C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics.hpp
+
