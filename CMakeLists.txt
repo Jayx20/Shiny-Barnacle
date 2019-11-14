@@ -4,8 +4,15 @@ project(Unnamed)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-g -Werror")
 
+include_directories(include)
+link_directories(lib)
+
 add_executable(
     Build
     src/main.cpp
     src/Graphics/Renderer.cpp
 )
+
+find_library(GLFWLIB lib/libglfw3.a)
+
+target_link_libraries(Build glew32 libglfw3.a opengl32 glu32 gdi32)

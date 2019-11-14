@@ -57,6 +57,7 @@ include CMakeFiles/Build.dir/progress.make
 include CMakeFiles/Build.dir/flags.make
 
 CMakeFiles/Build.dir/src/main.cpp.obj: CMakeFiles/Build.dir/flags.make
+CMakeFiles/Build.dir/src/main.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
 CMakeFiles/Build.dir/src/main.cpp.obj: src/main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Build.dir/src/main.cpp.obj"
 	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\main.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\main.cpp"
@@ -70,6 +71,7 @@ CMakeFiles/Build.dir/src/main.cpp.s: cmake_force
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\main.cpp" -o CMakeFiles\Build.dir\src\main.cpp.s
 
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: CMakeFiles/Build.dir/flags.make
+CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: src/Graphics/Renderer.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj"
 	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\Graphics\Renderer.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Renderer.cpp"

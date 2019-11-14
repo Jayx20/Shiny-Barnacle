@@ -4,9 +4,13 @@
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.cpp
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.hpp
+ include/GL/glew.h
+ include/GLFW/glfw3.h
 CMakeFiles/Build.dir/src/main.cpp.obj
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics.hpp
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Mesh.hpp
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/Renderer.hpp
  C:/Users/Jordan/Desktop/Unnamed Project/src/Graphics/ShaderClass.hpp
  C:/Users/Jordan/Desktop/Unnamed Project/src/main.cpp
+ include/GL/glew.h
+ include/GLFW/glfw3.h

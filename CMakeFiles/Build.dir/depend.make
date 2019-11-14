@@ -3,10 +3,14 @@
 
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: src/Graphics/Renderer.cpp
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: src/Graphics/Renderer.hpp
+CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: include/GL/glew.h
+CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: include/GLFW/glfw3.h
 
 CMakeFiles/Build.dir/src/main.cpp.obj: src/Graphics.hpp
 CMakeFiles/Build.dir/src/main.cpp.obj: src/Graphics/Mesh.hpp
 CMakeFiles/Build.dir/src/main.cpp.obj: src/Graphics/Renderer.hpp
 CMakeFiles/Build.dir/src/main.cpp.obj: src/Graphics/ShaderClass.hpp
 CMakeFiles/Build.dir/src/main.cpp.obj: src/main.cpp
+CMakeFiles/Build.dir/src/main.cpp.obj: include/GL/glew.h
+CMakeFiles/Build.dir/src/main.cpp.obj: include/GLFW/glfw3.h
 
