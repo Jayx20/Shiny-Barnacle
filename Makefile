@@ -122,6 +122,33 @@ Build/fast:
 	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/build
 .PHONY : Build/fast
 
+src/Graphics/Mesh.obj: src/Graphics/Mesh.cpp.obj
+
+.PHONY : src/Graphics/Mesh.obj
+
+# target to build an object file
+src/Graphics/Mesh.cpp.obj:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj
+.PHONY : src/Graphics/Mesh.cpp.obj
+
+src/Graphics/Mesh.i: src/Graphics/Mesh.cpp.i
+
+.PHONY : src/Graphics/Mesh.i
+
+# target to preprocess a source file
+src/Graphics/Mesh.cpp.i:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.i
+.PHONY : src/Graphics/Mesh.cpp.i
+
+src/Graphics/Mesh.s: src/Graphics/Mesh.cpp.s
+
+.PHONY : src/Graphics/Mesh.s
+
+# target to generate assembly for a file
+src/Graphics/Mesh.cpp.s:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.s
+.PHONY : src/Graphics/Mesh.cpp.s
+
 src/Graphics/Renderer.obj: src/Graphics/Renderer.cpp.obj
 
 .PHONY : src/Graphics/Renderer.obj
@@ -148,6 +175,60 @@ src/Graphics/Renderer.s: src/Graphics/Renderer.cpp.s
 src/Graphics/Renderer.cpp.s:
 	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.s
 .PHONY : src/Graphics/Renderer.cpp.s
+
+src/Graphics/ShaderClass.obj: src/Graphics/ShaderClass.cpp.obj
+
+.PHONY : src/Graphics/ShaderClass.obj
+
+# target to build an object file
+src/Graphics/ShaderClass.cpp.obj:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj
+.PHONY : src/Graphics/ShaderClass.cpp.obj
+
+src/Graphics/ShaderClass.i: src/Graphics/ShaderClass.cpp.i
+
+.PHONY : src/Graphics/ShaderClass.i
+
+# target to preprocess a source file
+src/Graphics/ShaderClass.cpp.i:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.i
+.PHONY : src/Graphics/ShaderClass.cpp.i
+
+src/Graphics/ShaderClass.s: src/Graphics/ShaderClass.cpp.s
+
+.PHONY : src/Graphics/ShaderClass.s
+
+# target to generate assembly for a file
+src/Graphics/ShaderClass.cpp.s:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.s
+.PHONY : src/Graphics/ShaderClass.cpp.s
+
+src/VectorUtil.obj: src/VectorUtil.cpp.obj
+
+.PHONY : src/VectorUtil.obj
+
+# target to build an object file
+src/VectorUtil.cpp.obj:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/VectorUtil.cpp.obj
+.PHONY : src/VectorUtil.cpp.obj
+
+src/VectorUtil.i: src/VectorUtil.cpp.i
+
+.PHONY : src/VectorUtil.i
+
+# target to preprocess a source file
+src/VectorUtil.cpp.i:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/VectorUtil.cpp.i
+.PHONY : src/VectorUtil.cpp.i
+
+src/VectorUtil.s: src/VectorUtil.cpp.s
+
+.PHONY : src/VectorUtil.s
+
+# target to generate assembly for a file
+src/VectorUtil.cpp.s:
+	$(MAKE) -f CMakeFiles\Build.dir\build.make CMakeFiles/Build.dir/src/VectorUtil.cpp.s
+.PHONY : src/VectorUtil.cpp.s
 
 src/main.obj: src/main.cpp.obj
 
@@ -185,9 +266,18 @@ help:
 	@echo ... Build
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... src/Graphics/Mesh.obj
+	@echo ... src/Graphics/Mesh.i
+	@echo ... src/Graphics/Mesh.s
 	@echo ... src/Graphics/Renderer.obj
 	@echo ... src/Graphics/Renderer.i
 	@echo ... src/Graphics/Renderer.s
+	@echo ... src/Graphics/ShaderClass.obj
+	@echo ... src/Graphics/ShaderClass.i
+	@echo ... src/Graphics/ShaderClass.s
+	@echo ... src/VectorUtil.obj
+	@echo ... src/VectorUtil.i
+	@echo ... src/VectorUtil.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

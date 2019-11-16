@@ -10,7 +10,10 @@ link_directories(lib)
 add_executable(
     Build
     src/main.cpp
+    src/VectorUtil.cpp
     src/Graphics/Renderer.cpp
+    src/Graphics/Mesh.cpp
+    src/Graphics/ShaderClass.cpp
 )
 
 find_library(GLFWLIB lib/libglfw3.a)

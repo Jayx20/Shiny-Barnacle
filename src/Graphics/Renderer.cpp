@@ -28,7 +28,7 @@ namespace Graphics {
         std::cout << "Initializing Graphics!\n";
 
         glewExperimental = true;
-        if ( !glewInit() ) {
+        if ( !glfwInit() ) {
             fprintf(stderr, "Failed to initialize GLFW\n");
             return -1;
         }
@@ -38,9 +38,11 @@ namespace Graphics {
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL 
 
+        glfwSetErrorCallback(uGlfwErrorCallback);
+
         window = glfwCreateWindow(windowWidth, windowHeight, "Untitled Game", NULL, NULL);
         if (window == NULL) {
-            fprintf(stderr, "Failed to create window\n");
+            fprintf(stderr, "Failed to create window, error code: %i\n",glfwGetError);
             glfwTerminate();
             return -1;
         }
@@ -51,6 +53,30 @@ namespace Graphics {
             fprintf(stderr, "GLEW failed to initialize\n");
             return -1;
         }
-    return 0;
+
+        glEnable( GL_DEBUG_OUTPUT );
+        glDebugMessageCallback(GLMessageCallback, 0 );
+
+        //glViewPort(0, 0, windowWidth, windowHeight);
+
+        return 0;
     }
+
+    void Renderer::uGlfwErrorCallback(int, const char* err_str) {
+        std::cout << "GLFW Error: " << err_str << std::endl;
+    } 
+
+    void Renderer::GLMessageCallback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam )
+    {
+    fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+            ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
+                type, severity, message );
+    }
+
 }

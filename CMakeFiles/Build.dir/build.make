@@ -70,10 +70,24 @@ CMakeFiles/Build.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Build.dir/src/main.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\main.cpp" -o CMakeFiles\Build.dir\src\main.cpp.s
 
+CMakeFiles/Build.dir/src/VectorUtil.cpp.obj: CMakeFiles/Build.dir/flags.make
+CMakeFiles/Build.dir/src/VectorUtil.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
+CMakeFiles/Build.dir/src/VectorUtil.cpp.obj: src/VectorUtil.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Build.dir/src/VectorUtil.cpp.obj"
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\VectorUtil.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\VectorUtil.cpp"
+
+CMakeFiles/Build.dir/src/VectorUtil.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Build.dir/src/VectorUtil.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Jordan\Desktop\Unnamed Project\src\VectorUtil.cpp" > CMakeFiles\Build.dir\src\VectorUtil.cpp.i
+
+CMakeFiles/Build.dir/src/VectorUtil.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Build.dir/src/VectorUtil.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\VectorUtil.cpp" -o CMakeFiles\Build.dir\src\VectorUtil.cpp.s
+
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: CMakeFiles/Build.dir/flags.make
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj: src/Graphics/Renderer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj"
 	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\Graphics\Renderer.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Renderer.cpp"
 
 CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.i: cmake_force
@@ -84,21 +98,55 @@ CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.s"
 	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Renderer.cpp" -o CMakeFiles\Build.dir\src\Graphics\Renderer.cpp.s
 
+CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj: CMakeFiles/Build.dir/flags.make
+CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
+CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj: src/Graphics/Mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj"
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\Graphics\Mesh.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Mesh.cpp"
+
+CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Mesh.cpp" > CMakeFiles\Build.dir\src\Graphics\Mesh.cpp.i
+
+CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\Mesh.cpp" -o CMakeFiles\Build.dir\src\Graphics\Mesh.cpp.s
+
+CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj: CMakeFiles/Build.dir/flags.make
+CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj: CMakeFiles/Build.dir/includes_CXX.rsp
+CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj: src/Graphics/ShaderClass.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj"
+	C:\mingw64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Build.dir\src\Graphics\ShaderClass.cpp.obj -c "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\ShaderClass.cpp"
+
+CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.i"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\ShaderClass.cpp" > CMakeFiles\Build.dir\src\Graphics\ShaderClass.cpp.i
+
+CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.s"
+	C:\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "C:\Users\Jordan\Desktop\Unnamed Project\src\Graphics\ShaderClass.cpp" -o CMakeFiles\Build.dir\src\Graphics\ShaderClass.cpp.s
+
 # Object files for target Build
 Build_OBJECTS = \
 "CMakeFiles/Build.dir/src/main.cpp.obj" \
-"CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj"
+"CMakeFiles/Build.dir/src/VectorUtil.cpp.obj" \
+"CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj" \
+"CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj" \
+"CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj"
 
 # External object files for target Build
 Build_EXTERNAL_OBJECTS =
 
 Build.exe: CMakeFiles/Build.dir/src/main.cpp.obj
+Build.exe: CMakeFiles/Build.dir/src/VectorUtil.cpp.obj
 Build.exe: CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj
+Build.exe: CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj
+Build.exe: CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj
 Build.exe: CMakeFiles/Build.dir/build.make
 Build.exe: CMakeFiles/Build.dir/linklibs.rsp
 Build.exe: CMakeFiles/Build.dir/objects1.rsp
 Build.exe: CMakeFiles/Build.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Build.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Jordan\Desktop\Unnamed Project\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Build.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Build.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

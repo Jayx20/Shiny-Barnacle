@@ -1,5 +1,7 @@
 #pragma once
+
 #include "GL/glew.h"
+#include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
 
 namespace Graphics {
@@ -8,6 +10,14 @@ namespace Graphics {
             GLFWwindow* window;
             int windowWidth;
             int windowHeight;
+            static void uGlfwErrorCallback(int, const char* err_str);
+            static void GLMessageCallback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam );
 
         public:
             Renderer();
