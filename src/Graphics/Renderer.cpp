@@ -42,7 +42,7 @@ namespace Graphics {
 
         window = glfwCreateWindow(windowWidth, windowHeight, "Untitled Game", NULL, NULL);
         if (window == NULL) {
-            fprintf(stderr, "Failed to create window, error code: %i\n",glfwGetError);
+            fprintf(stderr, "Failed to create window\n");
             glfwTerminate();
             return -1;
         }

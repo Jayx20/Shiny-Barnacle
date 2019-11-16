@@ -1,13 +1,11 @@
 file(REMOVE_RECURSE
-  "Build.exe"
-  "Build.exe.manifest"
+  "CMakeFiles/Build.dir/src/main.cpp.o"
+  "CMakeFiles/Build.dir/src/VectorUtil.cpp.o"
+  "CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.o"
+  "CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.o"
+  "CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.o"
   "Build.pdb"
-  "CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.obj"
-  "CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.obj"
-  "CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.obj"
-  "CMakeFiles/Build.dir/src/VectorUtil.cpp.obj"
-  "CMakeFiles/Build.dir/src/main.cpp.obj"
-  "libBuild.dll.a"
+  "Build"
 )
 
 # Per-language clean rules from dependency scanning.

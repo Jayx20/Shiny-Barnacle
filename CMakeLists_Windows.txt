@@ -5,7 +5,7 @@ set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-g -Werror")
 
 include_directories(include)
-link_directories(libLinux)
+link_directories(libWindows)
 
 add_executable(
     Build
@@ -16,5 +16,6 @@ add_executable(
     src/Graphics/ShaderClass.cpp
 )
 
+find_library(GLFWLIB lib/libglfw3.a)
 
-target_link_libraries(Build GL GLU GLEW glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xinerama Xcursor)
+target_link_libraries(Build glew32 libglfw3.a opengl32 glu32 gdi32)

@@ -107,7 +107,7 @@ namespace Graphics {
             glGetShaderInfoLog(shaderId, maxLength, &maxLength, &errorLog[0]);
 
             fprintf(stderr, "failed to compile shader");
-            fprintf(stderr, errorLog.data());
+            fprintf(stderr, "%s\n", errorLog.data());
             // Exit with failure.
             glDeleteShader(shaderId); // Don't leak the shader.
             return;

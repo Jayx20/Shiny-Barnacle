@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E remove -f CMakeFiles\Build.dir/objects.a
-C:\mingw64\x86_64-w64-mingw32\bin\ar.exe cr CMakeFiles\Build.dir/objects.a @CMakeFiles\Build.dir\objects1.rsp
-C:\mingw64\bin\g++.exe -g -Werror -g   -Wl,--whole-archive CMakeFiles\Build.dir/objects.a -Wl,--no-whole-archive  -o Build.exe -Wl,--out-implib,libBuild.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Build.dir\linklibs.rsp
+/usr/bin/c++  -g -Werror  -rdynamic CMakeFiles/Build.dir/src/main.cpp.o CMakeFiles/Build.dir/src/VectorUtil.cpp.o CMakeFiles/Build.dir/src/Graphics/Renderer.cpp.o CMakeFiles/Build.dir/src/Graphics/Mesh.cpp.o CMakeFiles/Build.dir/src/Graphics/ShaderClass.cpp.o  -o Build  -L/home/jayx20/Desktop/Shiny-Barnacle/Shiny-Barnacle/libLinux -Wl,-rpath,/home/jayx20/Desktop/Shiny-Barnacle/Shiny-Barnacle/libLinux -lGL -lGLU -lGLEW -lglfw3 -lX11 -lXxf86vm -lXrandr -lpthread -lXi -ldl -lXinerama -lXcursor 

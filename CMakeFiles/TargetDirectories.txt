@@ -1,3 +1,3 @@
-C:/Users/Jordan/Desktop/Unnamed Project/CMakeFiles/Build.dir
-C:/Users/Jordan/Desktop/Unnamed Project/CMakeFiles/edit_cache.dir
-C:/Users/Jordan/Desktop/Unnamed Project/CMakeFiles/rebuild_cache.dir
+/home/jayx20/Desktop/Shiny-Barnacle/Shiny-Barnacle/CMakeFiles/rebuild_cache.dir
+/home/jayx20/Desktop/Shiny-Barnacle/Shiny-Barnacle/CMakeFiles/Build.dir
+/home/jayx20/Desktop/Shiny-Barnacle/Shiny-Barnacle/CMakeFiles/edit_cache.dir
