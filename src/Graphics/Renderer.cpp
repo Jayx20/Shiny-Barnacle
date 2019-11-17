@@ -1,9 +1,9 @@
 #include "Renderer.hpp"
+
 #include <iostream>
 #include <string>
-
-// Include GLEW. Always include it before gl.h and glfw3.h, since it's a bit magic.
-#include "GL/glew.h"
+#include "GL/glew.h" // Always include glew before gl.h and glfw3.h, since it's a bit magic.
+#include "glm/glm.hpp"
 #include "GLFW/glfw3.h"
 
 const int DEFAULT_WINDOW_WIDTH = 640;
@@ -19,6 +19,33 @@ namespace Graphics {
     void Renderer::setWindowSize(int width, int height) {
         windowWidth = width;
         windowHeight = height;
+
+        //TODO: actually update the window
+    }
+
+    void Renderer::drawMesh(Mesh mesh) {
+        
+        //only enable the shader if needed, if it's already enabled don't mess with it
+        if(!shaderBound) {
+            mainShader.bind();
+            //don't update the variable, because we will unbind at the end, leaving it false
+        }
+
+        glBindVertexArray(mesh.getVaoId());
+        GLint numIndices; //should probably leave indices count in the mesh class, but this way we can use any VAO regardless of whether its in a mesh
+        glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &numIndices);
+        glDrawElements(mesh.getDrawType(), numIndices, GL_UNSIGNED_INT, NULL);
+        
+        #ifdef DEBUG
+        //Error check
+        GLenum error = glGetError();
+        if (error!=GL_NO_ERROR) {
+            std::cout << gluErrorString(error) << std::endl;
+        }
+        #endif
+        
+        glBindVertexArray(0);
+
     }
 
     /**
@@ -54,10 +81,12 @@ namespace Graphics {
             return -1;
         }
 
+        #ifdef DEBUG
         glEnable( GL_DEBUG_OUTPUT );
         glDebugMessageCallback(GLMessageCallback, 0 );
+        #endif
 
-        //glViewPort(0, 0, windowWidth, windowHeight);
+        mainShader.init("vertex.vsh","fragment.fsh");
 
         return 0;
     }
@@ -74,7 +103,7 @@ namespace Graphics {
                  const GLchar* message,
                  const void* userParam )
     {
-    fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+        fprintf( stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
             ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
                 type, severity, message );
     }

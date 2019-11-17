@@ -1,23 +1,25 @@
 #include "Mesh.hpp"
+
 #include <iostream>
+#include "../VectorUtil.hpp"
 
 namespace Graphics {
 
     //i considered using pointers for all of my vertex data stuff, may change to that later
+
+    ///TODO: make the builder class, i am sick of typing std::vector and glm::vec3 over and over
     Mesh::Mesh(
-                std::vector<glm::vec3> vertices,
+                std::vector<float> vertices,
+                std::vector<float> colors,
+                std::vector<float> textCoords,
                 std::vector<int> indices,
-                int drawType,
-                std::vector<glm::vec3> colors,
-                std::vector<glm::vec2> textCoords
+                int drawType
     ) {
-        assert(vertices.size()!=0 && "invalid mesh, no vertices");
-        
-        m_vertices = vectorsToFloats(vertices);
+        m_vertices = vertices;
+        m_colors = colors;
+        m_textCoords = textCoords;
         m_indices = indices;
         m_drawType = drawType;
-        m_colors = vectorsToFloats(colors);
-        m_textCoords = vectorsToFloats(textCoords);
 
         if(indices.size()==0) {
             m_indices = genIndexArray();
@@ -30,22 +32,16 @@ namespace Graphics {
     }
 
     bool Mesh::checkValid() {
+        ///TODO: make this actually do something lmao
         return true;
     }
-
 
     void Mesh::createBuffers() {
         if (vaoId==0) {
             glGenVertexArrays(1, &vaoId);
         }
 
-        if(vaoId==0) {
-            printf("bruh");
-        }
-
         glBindVertexArray(vaoId);
-
-
 
         //vertices
         glGenBuffers(1, &vertexBufferId);
@@ -96,7 +92,8 @@ namespace Graphics {
             }
         }
         else {
-            //give up, basically lmao
+            //other index generation hasn't been made, so just crash
+            ///TODO: either choose to only use GL_TRIANGLE_STRIP or add the rest of the generators
             assert("invalid mesh drawType" && false);
         }
 

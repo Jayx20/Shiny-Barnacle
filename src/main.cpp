@@ -5,7 +5,7 @@
 #include "GLFW/glfw3.h"
 #include <vector>
 #include "glm/glm.hpp"
-
+#include "VectorUtil.hpp"
 
 int main() {
     Graphics::Renderer renderer;
@@ -17,47 +17,36 @@ int main() {
     }
 
     
-    ///temporary code
+    ///basically everything in main is temporary code
 
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(renderer.getWindow(), GLFW_STICKY_KEYS, GL_TRUE);
 
 
     std::vector<glm::vec3> vertices = std::vector<glm::vec3>{glm::vec3(0,0,0), glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec3(1,1,0)};
-    Graphics::Mesh testMesh(vertices);
+    Graphics::Mesh testMesh(vectorsToFloats(vertices));
+    //TODO: make a mesh builder
+
+    std::vector<glm::vec3> colors;
+
+    std::vector<float> vertices2 = std::vector<float> {
+        -0.5, -0.5, 0,   -1, 1, 0,   0, 0, 0
+    };
+    colors = std::vector<glm::vec3> {
+        glm::vec3(0, 0.25, 1)
+    };
+
+    Graphics::Mesh testMesh2(vertices2, vectorsToFloats(colors)); 
+
 
     glClearColor(1,1,1,1);
-
-    Graphics::ShaderClass testProgram = Graphics::ShaderClass("vertex.vsh","fragment.fsh");
-    
-
 
     do {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
-
-        testProgram.bind();
-
+        renderer.drawMesh(testMesh);
+        renderer.drawMesh(testMesh2);
         
-        
-        glBindVertexArray(testMesh.getVaoId());
-        
-        
-        GLint numIndices;
-        glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &numIndices);
-
-        //glDrawArrays(GL_TRIANGLES, 0 ,3);
-        GLenum error = glGetError();
-        if (error!=GL_NO_ERROR) {
-            std::cout << gluErrorString(error) << std::endl;
-        }
-        glDrawElements(GL_TRIANGLE_STRIP, numIndices, GL_UNSIGNED_INT, NULL);
-        
-        glBindVertexArray(0);
-        
-        testProgram.unbind();
-
-
         glfwSwapBuffers(renderer.getWindow());
         glfwPollEvents();
         

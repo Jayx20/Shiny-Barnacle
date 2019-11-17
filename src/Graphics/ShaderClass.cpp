@@ -2,7 +2,12 @@
 #include <iostream>
 
 namespace Graphics {
-    ShaderClass::ShaderClass(std::string vshName, std::string fshName) {
+
+    ShaderClass::ShaderClass() {
+        initialized = false;
+    }
+
+    void ShaderClass::init(std::string vshName, std::string fshName) {
         programId = glCreateProgram();
 
         createVertexShader(vshName);
@@ -10,8 +15,8 @@ namespace Graphics {
         glAttachShader(programId, vertexShaderId);
         glAttachShader(programId, fragmentShaderId);
         
-        link();
-        validate();
+        //link and validate, and only set initialized to true if the process is a success
+        initialized = link() && validate();
 
         glDetachShader(programId, vertexShaderId);
         glDetachShader(programId, fragmentShaderId);
@@ -19,14 +24,18 @@ namespace Graphics {
     }
 
     void ShaderClass::bind() {
-        glUseProgram(programId);
+        if(initialized)
+            glUseProgram(programId);
+        else
+            fprintf(stderr, "Error: Attempt to bind uninitialized shader!");
+        
     }
 
     void ShaderClass::unbind() {
         glUseProgram(0);
     }
 
-    void ShaderClass::link() {
+    bool ShaderClass::link() {
         glLinkProgram(programId);
         //glValidateProgram(programId);
         int worked;
@@ -43,11 +52,12 @@ namespace Graphics {
             fprintf(stderr, "failed to link program, error: %s", errorLog.data());
             // Exit with failure.
             glDeleteProgram(programId); // this thing sucks.
-            return;
         }
+        return worked;
+
     }
 
-    void ShaderClass::validate() {
+    bool ShaderClass::validate() {
         glValidateProgram(programId);
         int result;
         glGetProgramiv(programId, GL_VALIDATE_STATUS, &result);
@@ -63,8 +73,8 @@ namespace Graphics {
             fprintf(stderr, "failed to validate program, error: %s", errorLog.data());
             // Exit with failure.
             glDeleteProgram(programId); // this thing sucks.
-            return;
         }
+        return result;
     }
 
     void ShaderClass::createVertexShader(std::string vertexShaderFile) {
@@ -83,7 +93,7 @@ namespace Graphics {
         std::ifstream file(sourcePath.c_str());
 
         if(!file) {
-            printf("failed to open file: %s\n", sourcePath.c_str());
+            fprintf(stderr, "failed to open file: %s\n", sourcePath.c_str());
             std::cerr << "Error: " << errno << std::endl;
         }
 

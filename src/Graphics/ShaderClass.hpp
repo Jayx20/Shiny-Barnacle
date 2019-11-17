@@ -10,17 +10,19 @@ namespace Graphics {
             GLuint programId;
             GLuint vertexShaderId;
             GLuint fragmentShaderId;
+            bool initialized;
         
             void createShader(int shaderId, std::string sourceFile);
-
-        public:
-            ShaderClass(std::string vertexShader, std::string fragmentShader);
-            void bind();
-            void unbind();
             void createVertexShader(std::string vertexShader);
             void createFragmentShader(std::string fragmentShader);
-            void link();
+            bool link();
+            bool validate();
             void cleanup();
-            void validate();
+
+        public:
+            ShaderClass();
+            void init(std::string vertexShader, std::string fragmentShader);
+            void bind();
+            void unbind();
     };
 }
