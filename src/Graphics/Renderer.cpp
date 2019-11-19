@@ -7,8 +7,8 @@
 #include "glm/gtc/matrix_transform.hpp" //glm::ortho
 #include "GLFW/glfw3.h"
 
-const int DEFAULT_WINDOW_WIDTH = 640;
-const int DEFAULT_WINDOW_HEIGHT = 480;
+const int DEFAULT_WINDOW_WIDTH = 1920;
+const int DEFAULT_WINDOW_HEIGHT = 1080;
 
 namespace Graphics {
 
@@ -36,6 +36,7 @@ namespace Graphics {
         mainShader.setUniformMat4("worldMatrix", glm::mat4(1.0f) ); //should be identity matrix
         
         mainShader.unbind();
+        shaderBound = false;
     }
 
     void Renderer::drawMesh(Mesh &mesh) {
@@ -46,6 +47,7 @@ namespace Graphics {
             mainShader.bind();
             //don't update the variable, because we will unbind at the end, leaving it false
         }
+        
 
         glBindVertexArray(mesh.getVaoId());
         int numIndices = 0; //should probably leave indices count in the mesh class, but this way we can use any VAO regardless of whether its in a mesh
@@ -110,7 +112,7 @@ namespace Graphics {
         mainShader.init("vertex.vsh","fragment.fsh");
 
         //glm::mat4 projectionMatrix = glm::ortho(0,windowWidth,0,windowHeight,-1,1);
-        glm::mat4 projectionMatrix = glm::ortho(-1,1,-1,1,-1,1);
+        glm::mat4 projectionMatrix = glm::ortho(-16.f,16.f,-9.f,9.f,-10.f,10.f);
 
         mainShader.bind();
         mainShader.setProjectionMatrix(projectionMatrix);

@@ -90,7 +90,7 @@ namespace Graphics {
     }
 
     void ShaderClass::createShader(int shaderId, std::string sourceFile) {
-        std::string sourcePath = "src/Graphics/Shaders/"+sourceFile;
+        std::string sourcePath = "./shaders/"+sourceFile;
         
         std::ifstream file(sourcePath.c_str());
 

@@ -120,9 +120,11 @@ namespace Graphics {
         }
         */
 
+        #ifdef DEBUG
         for(float color : finalColors) {
             printf("%f ", color);
         }
+        #endif
 
         return finalColors;
         

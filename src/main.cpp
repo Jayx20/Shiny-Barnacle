@@ -28,15 +28,19 @@ int main() {
     #endif
 
     std::vector<glm::vec3> vertices2 = std::vector<glm::vec3>{glm::vec3(0,0,0), glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec3(1,1,0)};
-    Graphics::Mesh testMesh(vectorsToFloats(vertices2));
+    Graphics::Mesh testMesh(std::vector<float>{0,0,0, 1,0,0, 0,0.5,0, 1,1,0 });
 
     std::vector<float> cubeColors;
     cubeColors.resize(72);
     std::fill(cubeColors.begin(), cubeColors.end(), 0.5);
 
-    Graphics::Mesh testCubeMesh = Graphics::CubeMesh::genCubeMesh(0.9f, Graphics::CubeMesh::cubeColors());
+    Graphics::Mesh testCubeMesh = Graphics::CubeMesh::genCubeMesh(1, Graphics::CubeMesh::cubeColors());
+
+    Graphics::Mesh cubeMesh2 = Graphics::CubeMesh::genCubeMesh(2, Graphics::CubeMesh::cubeColors());
 
     GameObjects::Object testCubeObj(testCubeMesh);
+
+    GameObjects::Object cube2(cubeMesh2, glm::vec3(-5, 5, 0));
 
     testCubeObj.setPosition(glm::vec3(0, -0.5, 0));
 
@@ -47,8 +51,15 @@ int main() {
 
         renderer.drawMesh(testMesh);
         renderer.drawObject(testCubeObj);
-        //testCubeObj.setRotation(testCubeObj.getRotation()+glm::vec3(0,0.01,0));
+        renderer.drawObject(cube2);
+        testCubeObj.setRotation(testCubeObj.getRotation()+glm::vec3(0.1,0.01,0));
+
+        cube2.setPosition(cube2.getPosition() + glm::vec3(.1,0,0));
+        if(cube2.getPosition().x>20)
+            cube2.setPosition(glm::vec3(-20, cube2.getPosition().y, cube2.getPosition().z));
         
+        cube2.setRotation(cube2.getRotation() + glm::vec3(0,0.01,0.05));
+
         glfwSwapBuffers(renderer.getWindow());
         glfwPollEvents();
         
