@@ -1,5 +1,7 @@
 #include "ShaderClass.hpp"
 #include <iostream>
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp" //glm::value_ptr
 
 namespace Graphics {
 
@@ -123,5 +125,38 @@ namespace Graphics {
             return;
         }
         
+    }
+
+    void ShaderClass::setProjectionMatrix(glm::mat4x4 projectionMatrix) {
+        int uniformLocation = glGetUniformLocation(programId, "projectionMatrix");
+        if (uniformLocation < 0) {
+            fprintf(stderr, "Could not find projectionMatrix");
+        }
+        float matrixFloats[16] = {0.0};
+        
+        //https://stackoverflow.com/questions/18890084/how-to-read-the-values-from-a-glmmat4
+        const float *floatSource = (const float*)glm::value_ptr(projectionMatrix);
+
+        for (int i = 0; i<16; ++i) {
+            matrixFloats[i] = floatSource[i];
+        }
+
+        glUniformMatrix4fv(uniformLocation, 1, false, matrixFloats);
+    }
+
+    void ShaderClass::setUniformMat4(std::string matrixName, glm::mat4 matrix) {
+        int uniformLocation = glGetUniformLocation(programId, matrixName.c_str());
+        if (uniformLocation < 0) {
+            fprintf(stderr, "Could not find %s", matrixName.c_str());
+        }
+        float matrixFloats[16] = {0.0};
+        
+        const float *floatSource = (const float*)glm::value_ptr(matrix);
+
+        for (int i = 0; i<16; ++i) {
+            matrixFloats[i] = floatSource[i];
+        }
+
+        glUniformMatrix4fv(uniformLocation, 1, false, matrixFloats);
     }
 }

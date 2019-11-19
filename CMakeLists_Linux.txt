@@ -4,6 +4,8 @@ project(Unnamed)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-g -Werror")
 
+add_compile_definitions(DEBUG)
+
 include_directories(include)
 link_directories(libLinux)
 
@@ -14,6 +16,8 @@ add_executable(
     src/Graphics/Renderer.cpp
     src/Graphics/Mesh.cpp
     src/Graphics/ShaderClass.cpp
+    src/Graphics/CubeMesh.cpp
+    src/GameObjects/Object.cpp
 )
 
 

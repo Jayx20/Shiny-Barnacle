@@ -6,6 +6,7 @@
 #include "GLFW/glfw3.h"
 #include "Mesh.hpp"
 #include "ShaderClass.hpp"
+#include "../GameObjects.hpp"
 
 namespace Graphics {
     class Renderer {
@@ -30,8 +31,9 @@ namespace Graphics {
             int init();
             void setWindowSize(int width, int height);
             GLFWwindow* getWindow() {return window;}
-            void drawMesh(Mesh mesh);
-            void drawMeshes(std::vector<Mesh> meshes);
+            void drawMesh(Mesh &mesh);
+            void drawObject(GameObjects::Object &object);
+            //void drawMeshes(std::vector<Mesh> &meshes);
 
     };
 }

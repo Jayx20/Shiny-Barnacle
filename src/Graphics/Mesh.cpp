@@ -12,7 +12,7 @@ namespace Graphics {
                 std::vector<float> vertices,
                 std::vector<float> colors,
                 std::vector<float> textCoords,
-                std::vector<int> indices,
+                std::vector<unsigned int> indices,
                 int drawType
     ) {
         m_vertices = vertices;
@@ -28,7 +28,7 @@ namespace Graphics {
 
         //change this in the future to be done manually?
         if (checkValid() ) {createBuffers();}
-        emptyArrays();
+        //emptyArrays(); //probably reenable this in the future idk
     }
 
     bool Mesh::checkValid() {
@@ -48,23 +48,21 @@ namespace Graphics {
         glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
         glBufferData(GL_ARRAY_BUFFER, m_vertices.size()*sizeof(float), m_vertices.data(), GL_STATIC_DRAW);
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, NULL);
+        glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, 0); //?
 
         //indices
         glGenBuffers(1, &indexBufferId);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size()*sizeof(int), m_indices.data(), GL_STATIC_DRAW);
-        
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size()*sizeof(unsigned int), m_indices.data(), GL_STATIC_DRAW);
+
         //color
         glGenBuffers(1, &colorBufferId);
         glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);
         glBufferData(GL_ARRAY_BUFFER, m_colors.size()*sizeof(float), m_colors.data(), GL_STATIC_DRAW);
         glVertexAttribPointer(1, 3, GL_FLOAT, false, 0, NULL);
-        //glBindBuffer(GL_ARRAY_BUFFER, 0); //?
-
-
-        glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, 0); //?
 
         //textures
         //todo
@@ -81,13 +79,13 @@ namespace Graphics {
         glDeleteVertexArrays(1, &vaoId);
     }
     
-    std::vector<int> Mesh::genIndexArray() {
-        std::vector<int> indices;
+    std::vector<unsigned int> Mesh::genIndexArray() {
+        std::vector<unsigned int> indices;
 
         //GL_TRIANGLE_STRIP
         if(m_drawType==5) {
             indices.resize(m_vertices.size());
-            for (int i = 0; i<m_vertices.size(); i++) {
+            for (unsigned int i = 0; i<m_vertices.size(); i++) {
                 indices[i] = i;
             }
         }
@@ -105,7 +103,7 @@ namespace Graphics {
      */
     void Mesh::emptyArrays() {
             m_vertices = std::vector<float>();
-            m_indices = std::vector<int>();
+            m_indices = std::vector<unsigned int>();
             m_colors = std::vector<float>{0,0,0};
             m_textCoords = std::vector<float>();
     }

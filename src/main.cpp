@@ -6,6 +6,7 @@
 #include <vector>
 #include "glm/glm.hpp"
 #include "VectorUtil.hpp"
+#include "GameObjects.hpp"
 
 int main() {
     Graphics::Renderer renderer;
@@ -22,22 +23,22 @@ int main() {
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(renderer.getWindow(), GLFW_STICKY_KEYS, GL_TRUE);
 
+    #ifdef DEBUG
+    printf("Debug Build\n");
+    #endif
 
-    std::vector<glm::vec3> vertices = std::vector<glm::vec3>{glm::vec3(0,0,0), glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec3(1,1,0)};
-    Graphics::Mesh testMesh(vectorsToFloats(vertices));
-    //TODO: make a mesh builder
+    std::vector<glm::vec3> vertices2 = std::vector<glm::vec3>{glm::vec3(0,0,0), glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec3(1,1,0)};
+    Graphics::Mesh testMesh(vectorsToFloats(vertices2));
 
-    std::vector<glm::vec3> colors;
+    std::vector<float> cubeColors;
+    cubeColors.resize(72);
+    std::fill(cubeColors.begin(), cubeColors.end(), 0.5);
 
-    std::vector<float> vertices2 = std::vector<float> {
-        -0.5, -0.5, 0,   -1, 1, 0,   0, 0, 0
-    };
-    colors = std::vector<glm::vec3> {
-        glm::vec3(0, 0.25, 1)
-    };
+    Graphics::Mesh testCubeMesh = Graphics::CubeMesh::genCubeMesh(0.9f, Graphics::CubeMesh::cubeColors());
 
-    Graphics::Mesh testMesh2(vertices2, vectorsToFloats(colors)); 
+    GameObjects::Object testCubeObj(testCubeMesh);
 
+    testCubeObj.setPosition(glm::vec3(0, -0.5, 0));
 
     glClearColor(1,1,1,1);
 
@@ -45,7 +46,8 @@ int main() {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
         renderer.drawMesh(testMesh);
-        renderer.drawMesh(testMesh2);
+        renderer.drawObject(testCubeObj);
+        //testCubeObj.setRotation(testCubeObj.getRotation()+glm::vec3(0,0.01,0));
         
         glfwSwapBuffers(renderer.getWindow());
         glfwPollEvents();

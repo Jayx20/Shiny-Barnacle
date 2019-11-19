@@ -4,6 +4,7 @@
 #include <string>
 #include "GL/glew.h" // Always include glew before gl.h and glfw3.h, since it's a bit magic.
 #include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp" //glm::ortho
 #include "GLFW/glfw3.h"
 
 const int DEFAULT_WINDOW_WIDTH = 640;
@@ -12,6 +13,7 @@ const int DEFAULT_WINDOW_HEIGHT = 480;
 namespace Graphics {
 
     Renderer::Renderer() {
+        shaderBound = false;
         windowWidth = DEFAULT_WINDOW_WIDTH;
         windowHeight = DEFAULT_WINDOW_HEIGHT;
     }
@@ -23,7 +25,21 @@ namespace Graphics {
         //TODO: actually update the window
     }
 
-    void Renderer::drawMesh(Mesh mesh) {
+    void Renderer::drawObject(GameObjects::Object &object) {
+        mainShader.bind();
+        shaderBound = true;
+
+        mainShader.setUniformMat4("worldMatrix", object.getWorldMatrix());
+
+        drawMesh(object.m_mesh);
+
+        mainShader.setUniformMat4("worldMatrix", glm::mat4(1.0f) ); //should be identity matrix
+        
+        mainShader.unbind();
+    }
+
+    void Renderer::drawMesh(Mesh &mesh) {
+        ///TODO: i just realized this copies the mesh, i need to fix that, lamo
         
         //only enable the shader if needed, if it's already enabled don't mess with it
         if(!shaderBound) {
@@ -32,19 +48,24 @@ namespace Graphics {
         }
 
         glBindVertexArray(mesh.getVaoId());
-        GLint numIndices; //should probably leave indices count in the mesh class, but this way we can use any VAO regardless of whether its in a mesh
+        int numIndices = 0; //should probably leave indices count in the mesh class, but this way we can use any VAO regardless of whether its in a mesh
         glGetBufferParameteriv(GL_ELEMENT_ARRAY_BUFFER, GL_BUFFER_SIZE, &numIndices);
-        glDrawElements(mesh.getDrawType(), numIndices, GL_UNSIGNED_INT, NULL);
+
+        glDrawElements(mesh.getDrawType(), numIndices, GL_UNSIGNED_INT, NULL );
         
         #ifdef DEBUG
         //Error check
-        GLenum error = glGetError();
+        GLint error = glGetError();
         if (error!=GL_NO_ERROR) {
             std::cout << gluErrorString(error) << std::endl;
         }
         #endif
         
         glBindVertexArray(0);
+
+        if(!shaderBound) {
+            mainShader.unbind();
+        }
 
     }
 
@@ -87,6 +108,24 @@ namespace Graphics {
         #endif
 
         mainShader.init("vertex.vsh","fragment.fsh");
+
+        //glm::mat4 projectionMatrix = glm::ortho(0,windowWidth,0,windowHeight,-1,1);
+        glm::mat4 projectionMatrix = glm::ortho(-1,1,-1,1,-1,1);
+
+        mainShader.bind();
+        mainShader.setProjectionMatrix(projectionMatrix);
+        mainShader.setUniformMat4("worldMatrix", glm::mat4(1.0f) ); //should be identity matrix
+        mainShader.unbind();
+
+        #ifdef DEBUG
+        //Error check
+        GLenum error = glGetError();
+        if (error!=GL_NO_ERROR) {
+            std::cout << gluErrorString(error) << std::endl;
+        }
+        #endif
+
+        glEnable(GL_DEPTH_TEST);
 
         return 0;
     }

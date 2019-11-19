@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "GL/glew.h"
+#include "glm/glm.hpp"
 #include <fstream>
 #include <vector>
 
@@ -24,5 +25,7 @@ namespace Graphics {
             void init(std::string vertexShader, std::string fragmentShader);
             void bind();
             void unbind();
+            void setProjectionMatrix(glm::mat4x4 projectionMatrix);
+            void setUniformMat4(std::string matrixName, glm::mat4 matrix);
     };
 }
