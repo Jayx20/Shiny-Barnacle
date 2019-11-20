@@ -27,24 +27,36 @@ int main() {
     printf("Debug Build\n");
     #endif
 
-    std::vector<glm::vec3> vertices2 = std::vector<glm::vec3>{glm::vec3(0,0,0), glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec3(1,1,0)};
-    Graphics::Mesh testMesh(std::vector<float>{0,0,0, 1,0,0, 0,0.5,0, 1,1,0 });
+    Graphics::Mesh testMesh(std::vector<float>{0,0,0, 5,0,0, 5,0.5,0, 1,1,5 });
 
-    std::vector<float> cubeColors;
-    cubeColors.resize(72);
-    std::fill(cubeColors.begin(), cubeColors.end(), 0.5);
+    Graphics::Mesh testMesh2(std::vector<float>{5,1,7, 0,1,2, 6.9,4.20,9.11, -2,4,1, 2.1,-2.1,0},
+                             std::vector<float>{-.5,.1,.7, 0,.8,.9, -.69,-.420,-.911, 1,-.4,.1, -.21,-.21,1},
+                             std::vector<float>(),
+                             std::vector<unsigned int> {0,1,2,3,4},
+                             0
+    );
+    
 
     Graphics::Mesh testCubeMesh = Graphics::CubeMesh::genCubeMesh(1, Graphics::CubeMesh::cubeColors());
 
-    Graphics::Mesh cubeMesh2 = Graphics::CubeMesh::genCubeMesh(2, Graphics::CubeMesh::cubeColors());
+    Graphics::Mesh cubeMesh2 = Graphics::CubeMesh::genCubeMesh(2);
 
     GameObjects::Object testCubeObj(testCubeMesh);
 
     GameObjects::Object cube2(cubeMesh2, glm::vec3(-5, 5, 0));
 
+    //GameObjects::Object cube3(Graphics::CubeMesh::genCubeMesh(3));
+    
+    GameObjects::Object monstrosity(testMesh2);
+
     testCubeObj.setPosition(glm::vec3(0, -0.5, 0));
 
+    monstrosity.setPosition(glm::vec3(-9, -3, 0));
+
     glClearColor(1,1,1,1);
+
+    float spinSpeed = .005;
+    float moveSpeed = .05;
 
     do {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -59,6 +71,24 @@ int main() {
             cube2.setPosition(glm::vec3(-20, cube2.getPosition().y, cube2.getPosition().z));
         
         cube2.setRotation(cube2.getRotation() + glm::vec3(0,0.01,0.05));
+
+
+
+        //fun code
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_D)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,spinSpeed,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_A)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,-spinSpeed,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_W)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(-spinSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_S)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(spinSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_Q)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,spinSpeed));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_E)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,-spinSpeed));
+
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(-moveSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_RIGHT)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(moveSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_UP)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(0,moveSpeed,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_DOWN)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(0,-moveSpeed,0));
+        //
+        renderer.drawObject(monstrosity);
+
 
         glfwSwapBuffers(renderer.getWindow());
         glfwPollEvents();

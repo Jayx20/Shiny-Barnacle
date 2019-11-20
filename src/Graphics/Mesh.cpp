@@ -56,6 +56,17 @@ namespace Graphics {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_indices.size()*sizeof(unsigned int), m_indices.data(), GL_STATIC_DRAW);
 
+        #ifdef DEBUG
+        //m_colors.size()*sizeof(float), m_colors.data()
+        printf("%i... %i\n", m_colors.size(), m_colors.size()*sizeof(float));
+        float* colorfref = m_colors.data();
+        for(int i = 0; i<m_colors.size(); i++) {
+            printf(":%f\n", *colorfref);
+            colorfref++;
+        }
+        colorfref = nullptr;
+        #endif
+
         //color
         glGenBuffers(1, &colorBufferId);
         glBindBuffer(GL_ARRAY_BUFFER, colorBufferId);

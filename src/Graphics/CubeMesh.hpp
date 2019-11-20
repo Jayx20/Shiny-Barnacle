@@ -17,7 +17,7 @@ namespace Graphics {
             //void updateMesh();
 
             //creates a mesh for a complex cube
-            static Graphics::Mesh genCubeMesh(float width, std::vector<float> colors);
+            static Graphics::Mesh genCubeMesh(float width, std::vector<float> colors = cubeColors());
             //makes cool colors for a complex cube mesh
             static std::vector<float> cubeColors();
     };
