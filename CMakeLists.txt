@@ -4,7 +4,7 @@ project(Unnamed)
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS "-g -Werror -std=c++11")
 
-add_compile_definitions()
+add_compile_definitions(DEBUG)
 
 include_directories(include)
 
@@ -28,6 +28,7 @@ add_executable(
     src/Graphics/Mesh.cpp
     src/Graphics/ShaderClass.cpp
     src/Graphics/CubeMesh.cpp
+    src/Graphics/Camera.cpp
     src/GameObjects/Object.cpp
 )
 

@@ -7,6 +7,7 @@
 #include "glm/gtc/matrix_transform.hpp" //glm::ortho
 #include "GLFW/glfw3.h"
 
+
 const int DEFAULT_WINDOW_WIDTH = 1920;
 const int DEFAULT_WINDOW_HEIGHT = 1080;
 
@@ -71,6 +72,14 @@ namespace Graphics {
 
     }
 
+    void Renderer::updateView(Camera &camera) {
+        mainShader.bind();
+
+        mainShader.setUniformMat4("viewMatrix", camera.viewMatrix());
+
+        mainShader.unbind();
+    }
+
     /**
      * With help from <a href="https://www.opengl-tutorial.org/beginners-tutorials/tutorial-1-opening-a-window/">opengl-tutorial.org</a> 
      */
@@ -117,6 +126,7 @@ namespace Graphics {
         mainShader.bind();
         mainShader.setProjectionMatrix(projectionMatrix);
         mainShader.setUniformMat4("worldMatrix", glm::mat4(1.0f) ); //should be identity matrix
+        mainShader.setUniformMat4("viewMatrix", glm::mat4(1.0f) ); //should be identity matrix
         mainShader.unbind();
 
         #ifdef DEBUG

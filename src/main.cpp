@@ -33,7 +33,7 @@ int main() {
                              std::vector<float>{-.5,.1,.7, 0,.8,.9, -.69,-.420,-.911, 1,-.4,.1, -.21,-.21,1},
                              std::vector<float>(),
                              std::vector<unsigned int> {0,1,2,3,4},
-                             0
+                             5
     );
     
 
@@ -56,10 +56,14 @@ int main() {
     glClearColor(1,1,1,1);
 
     float spinSpeed = .005;
-    float moveSpeed = .05;
+    float moveSpeed = .5;
+
+    Graphics::Camera camera;
 
     do {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+        renderer.updateView(camera);
 
         renderer.drawMesh(testMesh);
         renderer.drawObject(testCubeObj);
@@ -82,10 +86,10 @@ int main() {
         if(glfwGetKey(renderer.getWindow(), GLFW_KEY_Q)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,spinSpeed));
         if(glfwGetKey(renderer.getWindow(), GLFW_KEY_E)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,-spinSpeed));
 
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(-moveSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_RIGHT)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(moveSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_UP)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(0,moveSpeed,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_DOWN)) monstrosity.setPosition(monstrosity.getPosition() + glm::vec3(0,-moveSpeed,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT)) camera.setPosition(camera.getPosition() + glm::vec3(-moveSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_RIGHT)) camera.setPosition(camera.getPosition() + glm::vec3(moveSpeed,0,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_UP)) camera.setPosition(camera.getPosition() + glm::vec3(0,moveSpeed,0));
+        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_DOWN)) camera.setPosition(camera.getPosition() + glm::vec3(0,-moveSpeed,0));
         //
         renderer.drawObject(monstrosity);
 

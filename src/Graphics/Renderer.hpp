@@ -8,6 +8,8 @@
 #include "ShaderClass.hpp"
 #include "../GameObjects.hpp"
 
+#include "Camera.hpp"
+
 namespace Graphics {
     class Renderer {
         private:
@@ -34,6 +36,7 @@ namespace Graphics {
             void drawMesh(Mesh &mesh);
             void drawObject(GameObjects::Object &object);
             //void drawMeshes(std::vector<Mesh> &meshes);
+            void updateView (Camera &camera);
 
     };
 }

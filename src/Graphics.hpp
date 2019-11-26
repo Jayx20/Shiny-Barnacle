@@ -5,3 +5,4 @@
 #include "Graphics/ShaderClass.hpp"
 
 #include "Graphics/CubeMesh.hpp"
+#include "Graphics/Camera.hpp"
