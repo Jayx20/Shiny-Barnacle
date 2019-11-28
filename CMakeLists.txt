@@ -30,18 +30,19 @@ add_executable(
     src/Graphics/CubeMesh.cpp
     src/Graphics/Camera.cpp
     src/GameObjects/Object.cpp
+    src/Input/Keyboard.cpp
 )
 
 if(WIN32)
-find_library(GLFWLIB lib/libglfw3.a)
-target_link_libraries(Build glew32 libglfw3.a opengl32 glu32 gdi32)
+    find_library(GLFWLIB lib/libglfw3.a)
+    target_link_libraries(Build glew32 libglfw3.a opengl32 glu32 gdi32)
 endif()
 
 if(APPLE)
-target_link_libraries(Build GLEW glfw3 "-framework Cocoa" "-framework OpenGL" "-framework IOKit" "-framework CoreVideo")
-file(GLOB LIBRARIES "lib/*.dylib")
+    target_link_libraries(Build GLEW glfw3 "-framework Cocoa" "-framework OpenGL" "-framework IOKit" "-framework CoreVideo")
+    file(GLOB LIBRARIES "lib/*.dylib")
 endif()
 
 if(UNIX AND NOT APPLE)
-target_link_libraries(Build GL GLU GLEW glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xinerama Xcursor ${LIBRARIES})
+    target_link_libraries(Build GL GLU GLEW glfw3 X11 Xxf86vm Xrandr pthread Xi dl Xinerama Xcursor ${LIBRARIES})
 endif()

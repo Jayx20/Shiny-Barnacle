@@ -7,11 +7,13 @@
 #include "glm/glm.hpp"
 #include "VectorUtil.hpp"
 #include "GameObjects.hpp"
+#include "Input.hpp"
 
 int main() {
     Graphics::Renderer renderer;
-
     int initResult = renderer.init();
+    
+    Input::Keyboard keyboard(renderer.getWindow());
 
     if(initResult<0) {
         return initResult;
@@ -55,10 +57,12 @@ int main() {
 
     glClearColor(1,1,1,1);
 
-    float spinSpeed = .005;
-    float moveSpeed = .5;
+    float spinSpeed = .002;
+    float moveSpeed = .05;
+    float turnSpeed = .025;
 
     Graphics::Camera camera;
+    camera.setPosition(glm::vec3(0, 5, 0));
 
     do {
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -68,28 +72,35 @@ int main() {
         renderer.drawMesh(testMesh);
         renderer.drawObject(testCubeObj);
         renderer.drawObject(cube2);
-        testCubeObj.setRotation(testCubeObj.getRotation()+glm::vec3(0.1,0.01,0));
+        testCubeObj.setRotation(testCubeObj.getRotation()+glm::vec3(0.01,0.001,0));
 
-        cube2.setPosition(cube2.getPosition() + glm::vec3(.1,0,0));
+        cube2.setPosition(cube2.getPosition() + glm::vec3(.01,0,0));
         if(cube2.getPosition().x>20)
             cube2.setPosition(glm::vec3(-20, cube2.getPosition().y, cube2.getPosition().z));
         
-        cube2.setRotation(cube2.getRotation() + glm::vec3(0,0.01,0.05));
+        cube2.setRotation(cube2.getRotation() + glm::vec3(0,0.001,0.005));
 
 
 
         //fun code
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_D)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,spinSpeed,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_A)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,-spinSpeed,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_W)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(-spinSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_S)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(spinSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_Q)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,spinSpeed));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_E)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,-spinSpeed));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_D)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,spinSpeed,0));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_A)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,-spinSpeed,0));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_W)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(-spinSpeed,0,0));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_S)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(spinSpeed,0,0));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_Q)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,spinSpeed));
+        //if(glfwGetKey(renderer.getWindow(), GLFW_KEY_E)) monstrosity.setRotation(monstrosity.getRotation() + glm::vec3(0,0,-spinSpeed));
 
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_LEFT)) camera.setPosition(camera.getPosition() + glm::vec3(-moveSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_RIGHT)) camera.setPosition(camera.getPosition() + glm::vec3(moveSpeed,0,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_UP)) camera.setPosition(camera.getPosition() + glm::vec3(0,moveSpeed,0));
-        if(glfwGetKey(renderer.getWindow(), GLFW_KEY_DOWN)) camera.setPosition(camera.getPosition() + glm::vec3(0,-moveSpeed,0));
+        if(keyboard.keyPressed(GLFW_KEY_LEFT)) camera.move(glm::vec3(-moveSpeed,0,0));
+        if(keyboard.keyPressed(GLFW_KEY_RIGHT)) camera.move(glm::vec3(moveSpeed,0,0));
+        if(keyboard.keyPressed(GLFW_KEY_UP)) camera.move(glm::vec3(0,moveSpeed,0));
+        if(keyboard.keyPressed(GLFW_KEY_DOWN)) camera.move(glm::vec3(0,-moveSpeed,0));
+
+        if(keyboard.keyPressed(GLFW_KEY_D)) camera.rotate(glm::vec3(0, turnSpeed, 0));
+        if(keyboard.keyPressed(GLFW_KEY_A)) camera.rotate(glm::vec3(0, -turnSpeed, 0));
+        if(keyboard.keyPressed(GLFW_KEY_W)) camera.rotate(glm::vec3(-turnSpeed, 0, 0));
+        if(keyboard.keyPressed(GLFW_KEY_S)) camera.rotate(glm::vec3(turnSpeed, 0, 0));
+        if(keyboard.keyPressed(GLFW_KEY_Q)) camera.rotate(glm::vec3(0, 0, turnSpeed));
+        if(keyboard.keyPressed(GLFW_KEY_E)) camera.rotate(glm::vec3(0, 0, -turnSpeed));
         //
         renderer.drawObject(monstrosity);
 

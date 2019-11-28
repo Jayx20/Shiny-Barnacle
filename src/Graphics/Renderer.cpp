@@ -120,7 +120,6 @@ namespace Graphics {
 
         mainShader.init("vertex.vsh","fragment.fsh");
 
-        //glm::mat4 projectionMatrix = glm::ortho(0,windowWidth,0,windowHeight,-1,1);
         glm::mat4 projectionMatrix = glm::ortho(-16.f,16.f,-9.f,9.f,-10.f,10.f);
 
         mainShader.bind();
